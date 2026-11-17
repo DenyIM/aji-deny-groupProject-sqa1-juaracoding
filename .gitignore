@@ -1,0 +1,83 @@
+# ==========================================
+# 🛑 Maven Build Artifacts
+# ==========================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ==========================================
+# ☕ Java & JVM Crash Logs
+# ==========================================
+*.class
+*.log
+hs_err_pid*
+replay_pid*
+
+# ==========================================
+# 🧪 Test Runner & Reports Outputs
+# ==========================================
+test-output/
+surefire-reports/
+reports/*.html
+reports/screenshots/*
+!reports/screenshots/.gitkeep
+
+# ==========================================
+# 💻 IDE & Editor Files
+# ==========================================
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+
+# VS Code (preserve team configuration)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ==========================================
+# 🪟 Operating System Temporary Files
+# ==========================================
+# Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+

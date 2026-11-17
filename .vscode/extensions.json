@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "vscjava.vscode-java-pack",
+        "redhat.java",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-maven",
+        "redhat.vscode-xml",
+        "humao.rest-client"
+    ]
+}
+

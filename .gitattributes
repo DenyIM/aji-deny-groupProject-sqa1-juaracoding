@@ -1,0 +1,25 @@
+# Enforce consistent line endings across platforms
+* text=auto
+
+# Source code files
+*.java text diff=java eol=lf
+*.xml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.properties text eol=lf
+
+# Shell & Scripts
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.sh text eol=lf
+
+# Binary files (Excel matrices, archives, images)
+*.xlsx binary
+*.xls binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.jar binary
+*.zip binary
+
