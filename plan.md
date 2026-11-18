@@ -1,414 +1,202 @@
-# 📋 Rencana Implementasi: Enterprise Web & API Automation Testing Framework (magang.dikahadir.com)
+# 📋 Rencana Implementasi: Ekspansi Maksimal 355 Test Cases (240 Web UI & 115 API)
 
 ## [Goal Description]
-Membangun kerangka kerja otomatisasi pengujian tingkat *enterprise* yang mencakup **Web UI Automation (Selenium WebDriver 4.29.0)** dan **API Automation (REST Assured 5.4.0)** berbasis **Java 21**, **TestNG 7.10.2**, **ExtentReports 5.1.2**, dan **Apache Maven** dengan target aplikasi **[magang.dikahadir.com](https://magang.dikahadir.com)**.
+Memperluas cakupan skenario pengujian otomasi tingkat *enterprise* pada platform **[magang.dikahadir.com](https://magang.dikahadir.com)** hingga mencapai **total 355 Test Cases** untuk menggali seluruh fitur, sub-menu, validasi form, edge cases, serta endpoint API secara menyeluruh tanpa dibatasi kuota seimbang:
 
-Pembaruan rencana ini merespons seluruh instruksi terbaru:
-1. **Pembalikan Alokasi Peran & Tanggung Jawab**:
-   - **👤 Tester Deny**: Menguji seluruh modul **ADMIN (Web HRD)** (Login Admin, Dashboard Metrik, 9 Sub-menu Laporan, 4 Sub-menu Import, 13 Sub-menu Management, serta API Admin).
-   - **👤 Tester Aji**: Menguji seluruh modul **USER (Mobile Mirroring)** (Login User, Registrasi NIK Excel, Reset Password, Presensi Masuk/Keluar, Riwayat Aktivitas, Pengajuan Koreksi, Izin, Cuti, Lembur, Sakit, Profil/Ubah Password, serta API User).
-2. **Eksplorasi Mendalam & Ekspansi Skenario (100 Test Cases)**:
-   - Mencakup seluruh sub-menu dan alur bisnis secara menyeluruh (70 Skenario Web UI Selenium + 30 Skenario REST Assured API).
-3. **Pemisahan Jelas Tabel Web UI dan Tabel API**:
-   - Di dalam dokumen SIT Spreadsheet (`docs/SIT_Scenario_Magang_Hadir.xlsx`), tabel pengujian Web UI dan tabel pengujian API dipisahkan secara tegas di setiap sheet agar mudah dibaca, diaudit, dan dieksekusi.
-4. **Panduan Kolaborasi Multi-Device / Multi-Agent AI**:
-   - Dokumentasi arsitektur kerja paralel menggunakan AI Agent di device berbeda tanpa *merge conflict*, sinkronisasi branch Git, eksekusi test runner terpisah, dan integrasi hasil laporan ke ExtentReports & SIT Excel.
+1. **👤 Tester Deny (Admin HRD Web)**: **Total 190 Test Cases**
+   - **130 Skenario Web UI Selenium** (>100 UI TCs): Mencakup Autentikasi Admin (12 TCs), Dashboard & Metrik (10 TCs), 9 Sub-menu Laporan (45 TCs), 4 Sub-menu Import Excel (12 TCs), dan 13 Sub-menu Management Master Data (51 TCs).
+   - **60 Skenario REST Assured API** (>50 API TCs): Mencakup Admin Auth & JWT Security (10 TCs), Users Management CRUD (12 TCs), Attendance & Reports API (12 TCs), Approvals Workflow API (10 TCs), dan Master Data CRUD API (16 TCs).
+
+2. **👤 Tester Aji (User Magang Mobile Mirroring)**: **Total 165 Test Cases**
+   - **110 Skenario Web UI Selenium** (>100 UI TCs): Mencakup Autentikasi & Sesi Mobile (12 TCs), Self-Registration NIK Excel (12 TCs), Lupa & Reset Password (8 TCs), Presensi Masuk & Keluar Kamera/GPS/WFH/WFO (18 TCs), Aktivitas & Riwayat Presensi (10 TCs), Pengajuan Koreksi Absen (10 TCs), Izin Terlambat & Pulang Cepat (10 TCs), Pengajuan Lembur (10 TCs), Pengajuan Cuti & Klaim Sakit (12 TCs), serta Profil & Ubah Password (8 TCs).
+   - **55 Skenario REST Assured API** (>50 API TCs): Mencakup User Auth & Session API (10 TCs), Registration & NIK Check API (8 TCs), Attendance Clock-In/Out API (12 TCs), Activity Log & IDOR Security API (8 TCs), serta Requests Submission API untuk Koreksi, Izin, Cuti, Lembur, Sakit & Profil (17 TCs).
 
 ---
 
 ## User Review Required
 
 > [!IMPORTANT]
-> **Matriks Pembagian Peran Baru & Beban Pengujian**:
-> 
-> | Informasi Pembagian | 👤 Tester Deny (Admin HRD) | 👤 Tester Aji (User Magang) | Total Framework |
+> **Matriks Rekapitulasi 355 Test Cases (Eksplorasi Maksimal)**:
+>
+> | Parameter Pengujian | 👤 Tester Deny (Admin HRD) | 👤 Tester Aji (User Magang) | Total Keseluruhan |
 > | :--- | :---: | :---: | :---: |
-> | **Domain Utama SUT** | **ADMIN (Web HRD)** | **USER (Mobile Mirroring)** | Seluruh Sistem HADIR |
-> | **Akses URL** | `/authentication/login` | `/absen/login` | Portal Admin & User |
-> | **Kredensial Akun** | `admin@hadir.com` | `hadirsqa1@gmail.com` | Kredensial Resmi Excel |
-> | **Password Base64** | `TWFnYW5nU1FBX0pDQDEyMw==` | `U1FBQEhhZGlyMTIzNDU=` | Terenkripsi (Aman GitHub) |
-> | **Web UI Test Cases** | **35 Test Cases** (Positif & Negatif) | **35 Test Cases** (Positif & Negatif) | **70 Test Cases** |
-> | **REST Assured API** | **15 Test Cases** (Positif & Negatif) | **15 Test Cases** (Positif & Negatif) | **30 Test Cases** |
-> | **Total Test Cases** | **50 Test Cases** | **50 Test Cases** | **100 Test Cases** |
+> | **Domain Utama SUT** | **ADMIN (Web HRD - 26 Sub-menu)** | **USER (Mobile Mirroring - 10 Modul)** | Seluruh Sistem HADIR |
+> | **Akses URL Portal** | `/authentication/login` | `/absen/login` | Web Desktop & Mobile Viewport |
+> | **Kredensial Default**| `admin@hadir.com` | `hadirsqa1@gmail.com` | Kredensial Resmi Excel |
+> | **Tabel A: Web UI (Selenium)** | **130 Test Cases** (`SIT_ADM_UI_001` - `130`) | **110 Test Cases** (`SIT_USR_UI_001` - `110`) | **240 UI Test Cases** |
+> | **Tabel B: API (REST Assured)** | **60 Test Cases** (`SIT_ADM_API_001` - `060`) | **55 Test Cases** (`SIT_USR_API_001` - `055`) | **115 API Test Cases** |
+> | **Total per Tester** | **190 Test Cases** | **165 Test Cases** | **355 Test Cases** |
+
+> [!NOTE]
+> Di dalam dokumen SIT Excel (`docs/SIT_Scenario_Magang_Hadir.xlsx`), **Tabel A (Web UI)** dan **Tabel B (REST Assured API)** tetap dipisahkan secara tegas di dalam sheet masing-masing tester, ditambah Sheet Master UI (240 TCs) dan Sheet Master API (115 TCs).
 
 ---
 
-## 🌐 Panduan Kolaborasi Multi-Device Menggunakan Agent AI di Device Berbeda
+## Open Questions
 
-Untuk menjalankan pengujian secara paralel di dua komputer/device berbeda dengan AI Agent masing-masing (misal: Device 1 dipegang Deny, Device 2 dipegang Aji) dan tetap menghasilkan kode serta laporan yang selaras saat digabungkan, berikut standar alur kerja (*standard operating procedure*):
+> [!TIP]
+> Tidak ada pertanyaan yang menghambat. Pembagian jumlah test case kini disesuaikan dengan kepadatan fitur asli aplikasi (Admin memiliki 26 sub-menu tabel & master data sehingga menghasilkan 190 TCs, sedangkan User memiliki 10 modul mobile interaktif yang menghasilkan 165 TCs).
+
+---
+
+## Proposed Changes
 
 ```mermaid
 flowchart TD
-    subgraph Remote Git Repository GitHub
-        MAIN[Branch: main\nCore Framework & Runner Master]
-        BR_DENY[Branch: feature/tester-deny-admin]
-        BR_AJI[Branch: feature/tester-aji-user]
+    subgraph SIT Excel Generator 355 TCs
+        PS[scratch/create_excel.ps1\n355 Scenarios OpenXML Generator]
+        XLSX[docs/SIT_Scenario_Magang_Hadir.xlsx\n5 Sheets Terpisah]
+        PS -->|Generates| XLSX
     end
 
-    subgraph Device 1 Tester Deny - Admin Scope
-        AI1[AI Agent Device 1\nTask: Admin Web HRD]
-        AI1 -->|Edits| P_ADM[src/main/.../pages/admin/*]
-        AI1 -->|Edits| T_ADM[src/test/.../tests/admin/*]
-        AI1 -->|Edits| A_ADM[src/test/.../api/admin/*]
-        AI1 -->|Runs| R_DENY[mvn test -DsuiteXmlFile=testng-deny.xml]
-        AI1 -->|Push| BR_DENY
+    subgraph Scope Tester Deny - Admin HRD 190 TCs
+        D_UI[Tabel A: 130 Web UI TCs\nSIT_ADM_UI_001 s/d 130]
+        D_API[Tabel B: 60 REST Assured TCs\nSIT_ADM_API_001 s/d 060]
+        XML_D[testng-deny.xml]
+        D_UI & D_API --> XML_D
     end
 
-    subgraph Device 2 Tester Aji - User Scope
-        AI2[AI Agent Device 2\nTask: User Mobile Mirroring]
-        AI2 -->|Edits| P_USR[src/main/.../pages/user/*]
-        AI2 -->|Edits| T_USR[src/test/.../tests/user/*]
-        AI2 -->|Edits| A_USR[src/test/.../api/user/*]
-        AI2 -->|Runs| R_AJI[mvn test -DsuiteXmlFile=testng-aji.xml]
-        AI2 -->|Push| BR_AJI
+    subgraph Scope Tester Aji - User Magang 165 TCs
+        A_UI[Tabel A: 110 Web UI TCs\nSIT_USR_UI_001 s/d 110]
+        A_API[Tabel B: 55 REST Assured TCs\nSIT_USR_API_001 s/d 055]
+        XML_A[testng-aji.xml]
+        A_UI & A_API --> XML_A
     end
 
-    BR_DENY -->|Pull Request & Merge| MAIN
-    BR_AJI -->|Pull Request & Merge| MAIN
-    MAIN -->|Master Suite Execution| MASTER_RUN[mvn clean test\ntestng.xml Unified Report]
-```
-
-### 1. Prinsip Isolasi Package (Mencegah Merge Conflict 100%)
-- **Device 1 (Tester Deny)** HANYA membuat dan mengubah file pada package:
-  - `com.juaracoding.magang.pages.admin.*`
-  - `com.juaracoding.magang.tests.admin.*`
-  - `com.juaracoding.magang.api.admin.*`
-  - `src/test/resources/testng-deny.xml`
-- **Device 2 (Tester Aji)** HANYA membuat dan mengubah file pada package:
-  - `com.juaracoding.magang.pages.user.*`
-  - `com.juaracoding.magang.tests.user.*`
-  - `com.juaracoding.magang.api.user.*`
-  - `src/test/resources/testng-aji.xml`
-- **File Inti Bersama (Shared Core)**:
-  - `DriverFactory`, `BasePage`, `BaseTest`, `BaseApiTest`, `SecurityUtil`, `Constants`, `ExtentManager`, `TestListener` berada di branch `main`. Kedua device cukup menggunakan (*extends / inherits*) kelas-kelas ini tanpa mengubah implementasinya.
-
-### 2. Standar Suite XML Terisolasi
-- Di Device 1 (Deny), AI Agent menjalankan:
-  ```powershell
-  mvn test -DsuiteXmlFile=src/test/resources/testng-deny.xml
-  ```
-- Di Device 2 (Aji), AI Agent menjalankan:
-  ```powershell
-  mvn test -DsuiteXmlFile=src/test/resources/testng-aji.xml
-  ```
-- Ketika kedua branch di-*merge* ke `main`, Master Suite Runner (`testng.xml`) akan mengeksekusi kedua suite secara bersamaan dan menggabungkannya ke dalam satu dashboard ExtentReports terpadu.
-
-### 3. Template Prompt untuk AI Agent di Masing-Masing Device:
-> **Prompt untuk AI Agent di Device 1 (Deny)**:
-> *"Anda bertindak sebagai SDET untuk Tester Deny. Fokus Anda adalah modul ADMIN (Web HRD) di https://magang.dikahadir.com/authentication/login. Gunakan branch `feature/tester-deny-admin`. Buat Page Object di `pages/admin/`, TestNG classes di `tests/admin/`, dan API tests di `api/admin/`. Gunakan kredensial admin@hadir.com yang didecode dari Constants.ADMIN_PASSWORD_ENCODED. Jalankan test menggunakan `testng-deny.xml`. Jangan mengubah file di package `pages/user/` atau `tests/user/`."*
-
-> **Prompt untuk AI Agent di Device 2 (Aji)**:
-> *"Anda bertindak sebagai SDET untuk Tester Aji. Fokus Anda adalah modul USER (Mobile Mirroring) di https://magang.dikahadir.com/absen/login. Gunakan branch `feature/tester-aji-user`. Buat Page Object di `pages/user/`, TestNG classes di `tests/user/`, dan API tests di `api/user/`. Gunakan kredensial hadirsqa1@gmail.com yang didecode dari Constants.USER_PASSWORD_ENCODED. Jalankan test menggunakan `testng-aji.xml`. Jangan mengubah file di package `pages/admin/` atau `tests/admin/`."*
-
----
-
-## Arsitektur Framework Terintegrasi
-
-```mermaid
-flowchart TD
-    subgraph TestNG Execution Layer
-        TXML[testng.xml Master Runner] --> TL[TestListener / ITestListener]
-        TXML --> DENY_SUITE[testng-deny.xml - Admin Suite]
-        TXML --> AJI_SUITE[testng-aji.xml - User Suite]
+    subgraph Master Runner & Reporting
+        XML_M[testng.xml Master Suite - 355 TCs]
+        XML_D & XML_A --> XML_M
+        XML_M --> EXT[reports/ExtentReport.html]
     end
-
-    subgraph Tester Deny Admin Scope 50 TCs
-        DENY_SUITE --> D_UI[Selenium Web UI Tests - 35 TCs\nLogin, Dashboard, 9 Laporan, 4 Import, Management]
-        DENY_SUITE --> D_API[REST Assured API Tests - 15 TCs\nAuth, Monitoring, Approval, User CRUD]
-    end
-
-    subgraph Tester Aji User Scope 50 TCs
-        AJI_SUITE --> A_UI[Selenium Web UI Tests - 35 TCs\nLogin, Register NIK, Reset, Absen In/Out, History, Koreksi, Izin, Cuti, Lembur, Sakit]
-        AJI_SUITE --> A_API[REST Assured API Tests - 15 TCs\nAuth, Activity, Submit Koreksi, Cuti, Lembur, Logout]
-    end
-
-    subgraph Core Engine Shared
-        SEC[SecurityUtil Base64 Decoder]
-        DF[DriverFactory ThreadLocal Headless]
-        RA[REST Assured Base Engine]
-        ETM[ExtentTestManager Category Logging]
-        EM[ExtentManager Singleton]
-        SU[ScreenshotUtil Base64 Capture]
-    end
-
-    subgraph Deliverables
-        REP[reports/ExtentReport.html\nCategorized: Tester Deny & Tester Aji]
-        SIT[docs/SIT_Scenario_Magang_Hadir.xlsx\nSeparate Tables for UI & API in Each Sheet]
-    end
-
-    D_UI & A_UI -->|UI Actions| DF
-    D_API & A_API -->|API Requests| RA
-    D_UI & A_UI & D_API & A_API -->|Decode Passwords| SEC
-    TL -->|Auto Screenshot On Failure| SU
-    TL -->|Generate HTML Report| REP
 ```
 
 ---
 
-## Matriks Rinci SIT Test Cases (Total 100 Skenario: 70 UI + 30 API)
+### 1. Pembaruan Generator & Dokumen Matriks SIT (`docs/SIT_Scenario_Magang_Hadir.xlsx`)
 
-Dokumen **`docs/SIT_Scenario_Magang_Hadir.xlsx`** memisahkan tabel pengujian UI dan tabel pengujian API di setiap sheet:
-
-### 👤 Bagian 1: Alokasi Tester Deny — ADMIN (Web HRD)
-#### Tabel A: Web UI Automation Scenarios (35 Test Cases)
-| TC ID | Sub-Menu / Fitur | Judul Skenario Pengujian UI | Tipe | Prasyarat | Ekspektasi Hasil |
-| :--- | :--- | :--- | :---: | :--- | :--- |
-| **SIT_ADM_UI_001** | Admin Auth | Login Admin HRD dengan kredensial valid (`admin@hadir.com`) | **Positif** | Akun Admin | Berhasil login, diarahkan ke dashboard `/dashboards/pending`. |
-| **SIT_ADM_UI_002** | Admin Auth | Login Admin dengan password salah | **Negatif** | Akun Admin | Muncul alert MUI error *"Akun tidak ditemukan"* / unauthorized. |
-| **SIT_ADM_UI_003** | Admin Auth | Login Admin dengan email tidak terdaftar | **Negatif** | Email acak | Muncul alert MUI error kegagalan autentikasi. |
-| **SIT_ADM_UI_004** | Admin Auth | Login Admin dengan form email dan password kosong | **Negatif** | Form aktif | Submit form tertahan dengan validasi input wajib. |
-| **SIT_ADM_UI_005** | Admin Auth | Logout Admin dan pastikan sesi terhapus | **Positif** | Admin login | Redirect ke `/authentication/login`, URL admin terproteksi kembali. |
-| **SIT_ADM_UI_006** | Dashboard HRD | Membuka Dashboard Admin dan validasi widget metrik kehadiran | **Positif** | Admin login | Widget grafik & ringkasan kehadiran/pending tampil lengkap. |
-| **SIT_ADM_UI_007** | Dashboard HRD | Navigasi menu sidebar utama (Laporan, Management, Import) | **Positif** | Admin login | Setiap menu merespons dan me-render submenu yang sesuai. |
-| **SIT_ADM_UI_008** | Keamanan Route | Akses langsung URL `/dashboards/pending` tanpa session Admin | **Negatif** | Tanpa login | Sistem menolak akses dan me-redirect ke login admin. |
-| **SIT_ADM_UI_009** | Laporan Semua | Membuka submenu Laporan Semua dan verifikasi tabel data | **Positif** | Admin login | Tabel menampilkan seluruh aktivitas presensi pegawai. |
-| **SIT_ADM_UI_010** | Laporan Kehadiran | Filter data kehadiran berdasarkan Divisi & Rentang Tanggal | **Positif** | Admin login | Tabel memfilter data presensi sesuai parameter divisi. |
-| **SIT_ADM_UI_011** | Laporan Kehadiran | Filter data kehadiran dengan rentang tanggal di mana data kosong | **Negatif** | Admin login | Tabel menampilkan status kosong *"Tidak ada data"*. |
-| **SIT_ADM_UI_012** | Izin Terlambat | Membuka submenu Laporan Izin Terlambat dan verifikasi list izin | **Positif** | Admin login | List pengajuan izin terlambat tampil dengan statusnya. |
-| **SIT_ADM_UI_013** | Izin Pulang Cepat| Membuka submenu Laporan Izin Pulang Cepat dan filter nama pegawai | **Positif** | Admin login | Hasil filter menampilkan data pegawai yang izin pulang cepat. |
-| **SIT_ADM_UI_014** | Laporan Cuti | Verifikasi tabel rekapitulasi pengajuan cuti pegawai | **Positif** | Admin login | Tabel menampilkan tipe cuti, durasi tanggal, dan alasan. |
-| **SIT_ADM_UI_015** | Approval Cuti | Admin HRD menyetujui (Approve) permohonan cuti pending | **Positif** | Ada pending | Status permohonan cuti menjadi "Approved" & kuota berkurang. |
-| **SIT_ADM_UI_016** | Approval Cuti | Admin HRD menolak (Reject) cuti tanpa mengisi catatan alasan | **Negatif** | Ada pending | Sistem mewajibkan alasan penolakan sebelum reject diproses. |
-| **SIT_ADM_UI_017** | Laporan Sakit | Membuka submenu Laporan Sakit dan preview surat dokter | **Positif** | Admin login | Modal/popup surat dokter berhasil terbuka untuk diverifikasi. |
-| **SIT_ADM_UI_018** | Laporan Lembur | Membuka submenu Laporan Lembur (`/admin/overtimerequest`) | **Positif** | Admin login | Tabel permohonan lembur kerja pegawai tampil lengkap. |
-| **SIT_ADM_UI_019** | Approval Lembur | Admin HRD menyetujui (Approve) permohonan lembur kerja | **Positif** | Ada pending | Status lembur disetujui dan waktu lembur terkalkulasi. |
-| **SIT_ADM_UI_020** | Approval Lembur | Admin HRD menolak (Reject) permohonan lembur dengan alasan | **Negatif** | Ada pending | Status permohonan lembur berubah menjadi "Rejected". |
-| **SIT_ADM_UI_021** | Laporan Koreksi | Membuka submenu Laporan Koreksi Absen (`/monitoring/koreksi`) | **Positif** | Admin login | Daftar pengajuan koreksi jam absensi pegawai tampil. |
-| **SIT_ADM_UI_022** | Approval Koreksi | Admin HRD menyetujui pengajuan koreksi jam absen | **Positif** | Ada pending | Data absensi pegawai pada tanggal terkait berhasil diperbarui. |
-| **SIT_ADM_UI_023** | Download Absen | Download laporan rekapitulasi kehadiran dalam format file Excel | **Positif** | Admin login | File Excel (.xlsx) berhasil diunduh dengan struktur utuh. |
-| **SIT_ADM_UI_024** | Download Absen | Download laporan tanpa memilih tanggal wajib | **Negatif** | Form download | Muncul alert peringatan parameter tanggal belum dipilih. |
-| **SIT_ADM_UI_025** | Download Cuti | Download laporan rekapitulasi cuti pegawai ke Excel | **Positif** | Admin login | File Excel laporan cuti ter-download dengan benar. |
-| **SIT_ADM_UI_026** | Import Status | Buka halaman Import Status Aktif dan validasi format file template | **Positif** | Admin login | Template Excel import status aktif berhasil diunduh. |
-| **SIT_ADM_UI_027** | Import User | Upload file import user dengan format invalid (file .txt) | **Negatif** | Admin login | Sistem menolak upload dan memunculkan error file harus .xlsx. |
-| **SIT_ADM_UI_028** | Management User | Pencarian data karyawan berdasarkan NIK valid (`D6201031`) | **Positif** | Admin user | Tabel menampilkan baris data karyawan Hadir SQA Testing 1. |
-| **SIT_ADM_UI_029** | Management User | Pencarian data user dengan kata kunci acak yang tidak ada | **Negatif** | Admin user | Tabel menampilkan pesan data user tidak ditemukan. |
-| **SIT_ADM_UI_030** | Management User | Toggle status keaktifan user karyawan (Aktif / Non-aktif) | **Positif** | Admin user | Status keaktifan user berhasil diperbarui secara real-time. |
-| **SIT_ADM_UI_031** | Pendaftaran User | Buka form pendaftaran user admin (`/management/user-v2/register`) | **Positif** | Admin login | Form registrasi user internal HRD terbuka lengkap. |
-| **SIT_ADM_UI_032** | Pendaftaran User | Submit pendaftaran user dengan field NIK dan nama kosong | **Negatif** | Form aktif | Validasi input required muncul mencegah submit form. |
-| **SIT_ADM_UI_033** | Management Divisi| Melihat daftar divisi dan memfilter unit kerja | **Positif** | Admin login | Daftar divisi dan unit terkait ter-render dengan rapi. |
-| **SIT_ADM_UI_034** | Shifting & Jadwal| Membuka submenu Shifting dan verifikasi jadwal kerja tim | **Positif** | Admin login | Tabel shift pagi/siang/malam dan jam kerja tampil. |
-| **SIT_ADM_UI_035** | User Monitoring | Membuka modul User Monitoring (`/management/user-monitoring/add`) | **Positif** | Admin login | Halaman konfigurasi monitoring presensi pegawai terbuka. |
-
-#### Tabel B: REST Assured API Scenarios (15 Test Cases)
-| TC ID | Endpoint | Method | Skenario Pengujian API | Tipe | Status Diharapkan |
-| :--- | :--- | :---: | :--- | :---: | :---: |
-| **SIT_ADM_API_001** | `/api/login` | `POST` | Login Admin dengan kredensial valid (`admin@hadir.com`) | **Positif** | `200 OK` (Token role admin) |
-| **SIT_ADM_API_002** | `/api/login` | `POST` | Login Admin dengan password salah | **Negatif** | `401 Unauthorized` |
-| **SIT_ADM_API_003** | `/api/login` | `POST` | Login Admin dengan email tidak terdaftar | **Negatif** | `401 Unauthorized` |
-| **SIT_ADM_API_004** | `/api/login` | `POST` | Request login tanpa field `strategy` | **Negatif** | `401 Unauthorized` |
-| **SIT_ADM_API_005** | `/api/login` | `POST` | Request login dengan empty payload `{}` | **Negatif** | `401 Unauthorized` |
-| **SIT_ADM_API_006** | `/api/admin/user` | `GET` | Ambil data list user menggunakan Admin Bearer Token | **Positif** | `200 OK` (Array users) |
-| **SIT_ADM_API_007** | `/api/admin/user` | `GET` | Akses endpoint admin/user tanpa Bearer Token | **Negatif** | `401 Unauthorized` |
-| **SIT_ADM_API_008** | `/api/admin/user` | `GET` | Akses endpoint admin/user menggunakan Token User biasa | **Negatif** | `403 Forbidden` / `401` |
-| **SIT_ADM_API_009** | `/api/activity` | `GET` | Admin mengambil seluruh data presensi semua pegawai | **Positif** | `200 OK` (All records) |
-| **SIT_ADM_API_010** | `/api/activity` | `GET` | Admin filter data activity dengan parameter user_id invalid | **Negatif** | `200 OK` / `400` (Empty array) |
-| **SIT_ADM_API_011** | `/api/cuti` | `GET` | Ambil antrean pengajuan cuti berstatus pending | **Positif** | `200 OK` (Pending cuti) |
-| **SIT_ADM_API_012** | `/api/cuti/{id}` | `PATCH` | Approve pengajuan cuti dengan ID valid via API | **Positif** | `200 OK` (Status updated) |
-| **SIT_ADM_API_013** | `/api/cuti/{id}` | `PATCH` | Approve pengajuan cuti dengan ID yang tidak ada | **Negatif** | `404 Not Found` |
-| **SIT_ADM_API_014** | `/api/overtime` | `GET` | Ambil data permohonan lembur pegawai via Admin Token | **Positif** | `200 OK` (Array lembur) |
-| **SIT_ADM_API_015** | `/api/logout` | `POST` | Logout Admin API dan terminasi token | **Positif** | `200 OK` / `204 No Content` |
+#### [MODIFY] `scratch/create_excel.ps1` & `docs/SIT_Scenario_Magang_Hadir.xlsx`
+Memperbarui script generator PowerShell OpenXML untuk menghasilkan **355 Test Cases** yang terdistribusi pada 5 sheet:
+- **Sheet 1 (`Summary & Multi-Device Guide`)**: Ringkasan eksekutif 355 TCs (Deny: 130 UI + 60 API = 190 TCs; Aji: 110 UI + 55 API = 165 TCs) beserta panduan kolaborasi Git multi-device.
+- **Sheet 2 (`Tester Deny (Admin HRD)`)**:
+  - **Tabel A (Web UI Selenium)**: `SIT_ADM_UI_001` s/d `SIT_ADM_UI_130` (130 baris).
+  - **Tabel B (REST Assured API)**: `SIT_ADM_API_001` s/d `SIT_ADM_API_060` (60 baris).
+- **Sheet 3 (`Tester Aji (User Magang)`)**:
+  - **Tabel A (Web UI Selenium)**: `SIT_USR_UI_001` s/d `SIT_USR_UI_110` (110 baris).
+  - **Tabel B (REST Assured API)**: `SIT_USR_API_001` s/d `SIT_USR_API_055` (55 baris).
+- **Sheet 4 (`Master Matrix - UI Scenarios`)**: Gabungan 240 Skenario Web UI.
+- **Sheet 5 (`Master Matrix - API Scenarios`)**: Gabungan 115 Skenario REST Assured API.
 
 ---
 
-### 👤 Bagian 2: Alokasi Tester Aji — USER (Mobile Mirroring)
-#### Tabel A: Web UI Automation Scenarios (35 Test Cases)
-| TC ID | Fitur / Halaman | Judul Skenario Pengujian UI | Tipe | Prasyarat | Ekspektasi Hasil |
-| :--- | :--- | :--- | :---: | :--- | :--- |
-| **SIT_USR_UI_001** | User Auth | Login Magang dengan kredensial valid (`hadirsqa1@gmail.com`) | **Positif** | User terdaftar | Berhasil login, diarahkan ke dashboard `/apps/absent`. |
-| **SIT_USR_UI_002** | User Auth | Login Magang dengan password salah | **Negatif** | User terdaftar | Muncul alert error MUI merah *"Akun tidak ditemukan"*. |
-| **SIT_USR_UI_003** | User Auth | Login Magang dengan email belum terdaftar | **Negatif** | Email acak | Muncul alert error *"Akun tidak ditemukan"*. |
-| **SIT_USR_UI_004** | User Auth | Login Magang dengan format email invalid (tanpa `@`) | **Negatif** | Form aktif | Validasi HTML5 / UI mencegah submit form. |
-| **SIT_USR_UI_005** | User Auth | Login Magang dengan field email dan password kosong | **Negatif** | Form aktif | Submit tertahan, muncul pesan input wajib diisi. |
-| **SIT_USR_UI_006** | User Auth | Verifikasi fungsi show/hide toggle password (icon mata) | **Positif** | Form login | Tipe input berganti antara `password` dan `text`. |
-| **SIT_USR_UI_007** | Registrasi | Registrasi akun baru dengan NIK valid Excel (`F1240001`) & selfie | **Positif** | NIK tersedia | Form terkirim sukses dan memicu alur pendaftaran. |
-| **SIT_USR_UI_008** | Registrasi | Registrasi dengan field form kosong | **Negatif** | Form register | Validasi field wajib muncul, submit form dicegah. |
-| **SIT_USR_UI_009** | Registrasi | Registrasi tanpa melampirkan upload foto selfie | **Negatif** | Form terisi | Form menolak pengiriman karena selfie bersifat required. |
-| **SIT_USR_UI_010** | Registrasi | Registrasi dengan NIK yang sudah terdaftar (duplikat) | **Negatif** | NIK terdaftar | Muncul alert pesan kegagalan duplikasi data NIK. |
-| **SIT_USR_UI_011** | Reset Pass | Permohonan reset password dengan email valid terdaftar | **Positif** | Email terdaftar | Alert sukses hijau muncul konfirmasi link reset terkirim. |
-| **SIT_USR_UI_012** | Reset Pass | Permohonan reset password dengan field email kosong | **Negatif** | Form aktif | Validasi input email wajib muncul. |
-| **SIT_USR_UI_013** | Reset Pass | Navigasi tombol "Login" kembali dari reset password | **Positif** | Halaman reset | Halaman berpindah kembali ke URL `/absen/login`. |
-| **SIT_USR_UI_014** | Presensi Masuk | Presensi Masuk (Check-In) WFO dengan selfie & catatan | **Positif** | User login | Status berubah menjadi "IN", kartu absensi hari ini tampil. |
-| **SIT_USR_UI_015** | Presensi Masuk | Presensi Masuk (Check-In) WFH dengan foto & lokasi | **Positif** | User login | Status tercatat "IN (Work From Home)". |
-| **SIT_USR_UI_016** | Presensi Masuk | Presensi Masuk tanpa izin akses kamera | **Negatif** | Kamera block | Muncul pesan error izin kamera diperlukan untuk presensi. |
-| **SIT_USR_UI_017** | Presensi Keluar | Presensi Pulang (Check-Out) pada hari yang sama | **Positif** | User status IN | Status berubah menjadi "OUT", waktu keluar tercatat. |
-| **SIT_USR_UI_018** | Presensi Masuk | Presensi Masuk ganda (Check-in kedua kali di hari yang sama) | **Negatif** | User sudah IN | Sistem menolak check-in ganda / tombol check-in nonaktif. |
-| **SIT_USR_UI_019** | Riwayat Absen | Membuka dan melihat list riwayat absensi (`/apps/absent/activity`) | **Positif** | User login | Daftar kartu riwayat absensi tampil dengan badge status. |
-| **SIT_USR_UI_020** | Riwayat Absen | Navigasi hyperlink "Selengkapnya" dari dashboard ke activity | **Positif** | Dashboard | URL berpindah tepat ke `/apps/absent/activity`. |
-| **SIT_USR_UI_021** | Riwayat Absen | Filter riwayat dengan rentang tanggal tidak valid (Start > End) | **Negatif** | Activity page | Filter menolak atau menampilkan pesan tanggal tidak valid. |
-| **SIT_USR_UI_022** | Koreksi Absen | User mengajukan koreksi jam masuk/keluar yang terlewat | **Positif** | User login | Pengajuan koreksi berhasil terkirim ke antrean admin. |
-| **SIT_USR_UI_023** | Koreksi Absen | Pengajuan koreksi absen tanpa mengisi alasan koreksi | **Negatif** | Form koreksi | Form menolak pengiriman karena alasan koreksi mandatory. |
-| **SIT_USR_UI_024** | Pengajuan Izin | Pengajuan izin terlambat datang dengan alasan jelas | **Positif** | User login | Pengajuan berhasil disimpan dan berstatus "Pending". |
-| **SIT_USR_UI_025** | Pengajuan Izin | Pengajuan izin pulang cepat sebelum jam kerja usai | **Positif** | User login | Permohonan izin pulang cepat tersimpan ke sistem. |
-| **SIT_USR_UI_026** | Pengajuan Izin | Pengajuan izin tanpa mengisi alasan / keterangan | **Negatif** | Form izin | Validasi form mewajibkan alasan sebelum submit. |
-| **SIT_USR_UI_027** | Izin Sakit | Pengajuan izin sakit dengan upload surat dokter (PDF/JPG) | **Positif** | User login | Pengajuan izin sakit tersimpan dengan lampiran bukti. |
-| **SIT_USR_UI_028** | Izin Sakit | Pengajuan izin sakit tanpa melampirkan bukti surat dokter | **Negatif** | Form sakit | Sistem menolak submit karena bukti lampiran mandatory. |
-| **SIT_USR_UI_029** | Pengajuan Cuti | User mengajukan cuti tahunan dengan tanggal dan alasan valid | **Positif** | Kuota ada | Pengajuan cuti tersimpan dengan status "Pending Approval". |
-| **SIT_USR_UI_030** | Pengajuan Cuti | Pengajuan cuti dengan tanggal yang sudah diajukan (bentrok) | **Negatif** | Cuti aktif | Sistem menolak pengajuan karena adanya tanggal tumpang tindih. |
-| **SIT_USR_UI_031** | Pengajuan Lembur | User mengajukan lembur kerja dengan jam mulai dan selesai valid | **Positif** | User login | Permohonan lembur tersimpan sukses berstatus pending. |
-| **SIT_USR_UI_032** | Pengajuan Lembur | Pengajuan lembur dengan jam mulai lebih besar dari jam selesai | **Negatif** | Form lembur | Validasi error muncul: jam mulai harus lebih awal dari selesai. |
-| **SIT_USR_UI_033** | Download Report | Download rekapitulasi absensi personal karyawan | **Positif** | User login | File laporan absensi personal berhasil di-download. |
-| **SIT_USR_UI_034** | Ubah Password | User membuka halaman Ubah Password (`/apps/absent/change-password`) | **Positif** | User login | Form ganti password lama dan password baru terbuka. |
-| **SIT_USR_UI_035** | Ubah Password | Ubah password dengan konfirmasi password baru tidak cocok | **Negatif** | Form password | Muncul pesan error konfirmasi password tidak sesuai. |
+### 2. Rincian Lengkap 190 Test Cases Tester Deny (Admin Web HRD)
 
-#### Tabel B: REST Assured API Scenarios (15 Test Cases)
-| TC ID | Endpoint | Method | Skenario Pengujian API | Tipe | Status Diharapkan |
-| :--- | :--- | :---: | :--- | :---: | :---: |
-| **SIT_USR_API_001** | `/api/login` | `POST` | Login User Magang kredensial valid via REST Assured | **Positif** | `200 OK` (Access token user) |
-| **SIT_USR_API_002** | `/api/login` | `POST` | Login User dengan password salah | **Negatif** | `401 Unauthorized` |
-| **SIT_USR_API_003** | `/api/login` | `POST` | Login User dengan email tidak terdaftar | **Negatif** | `401 Unauthorized` |
-| **SIT_USR_API_004** | `/api/login` | `POST` | Login User tanpa payload `strategy` | **Negatif** | `401 Unauthorized` |
-| **SIT_USR_API_005** | `/api/login` | `POST` | Login User dengan empty JSON payload `{}` | **Negatif** | `401 Unauthorized` |
-| **SIT_USR_API_006** | `/api/activity` | `GET` | Ambil riwayat presensi user dengan User Bearer Token | **Positif** | `200 OK` (Array user activity) |
-| **SIT_USR_API_007** | `/api/activity` | `GET` | Akses riwayat presensi tanpa menyertakan Header Authorization | **Negatif** | `401 Unauthorized` |
-| **SIT_USR_API_008** | `/api/activity` | `GET` | Filter riwayat presensi dengan status `IN` | **Positif** | `200 OK` (Filtered items) |
-| **SIT_USR_API_009** | `/api/koreksi` | `POST` | Kirim pengajuan koreksi absen via API dengan body valid | **Positif** | `201 Created` / `200 OK` |
-| **SIT_USR_API_010** | `/api/koreksi` | `POST` | Kirim pengajuan koreksi absen tanpa parameter alasan | **Negatif** | `400 Bad Request` |
-| **SIT_USR_API_011** | `/api/cuti` | `POST` | Kirim permohonan cuti tahunan via User Bearer Token | **Positif** | `201 Created` / `200 OK` |
-| **SIT_USR_API_012** | `/api/cuti` | `POST` | Kirim permohonan cuti tanpa rentang tanggal | **Negatif** | `400 Bad Request` |
-| **SIT_USR_API_013** | `/api/overtime` | `POST` | Kirim permohonan lembur dengan jam valid via API | **Positif** | `201 Created` / `200 OK` |
-| **SIT_USR_API_014** | `/api/overtime` | `POST` | Kirim permohonan lembur tanpa jam selesai | **Negatif** | `400 Bad Request` |
-| **SIT_USR_API_015** | `/api/logout` | `POST` | Logout User API dan menghapus session token | **Positif** | `200 OK` / `204 No Content` |
+#### Tabel A — 130 Skenario Web UI Admin (`SIT_ADM_UI_001` s/d `SIT_ADM_UI_130`):
+| Kategori Modul | Rentang ID | Jumlah | Cakupan Skenario Positif, Negatif & Boundary |
+| :--- | :---: | :---: | :--- |
+| **1. Autentikasi & Keamanan Sesi Admin** | `001 - 012` | **12 TCs** | Valid login, wrong pass, unregistered email, invalid email format, empty email, empty pass, both empty, show/hide password, SQLi payload, XSS payload, unauthenticated direct URL redirect, logout & session clear. |
+| **2. Dashboard Utama & Metrik** | `013 - 022` | **10 TCs** | Metric cards (Total, Hadir, Terlambat, Izin, Cuti, Alpha), filter date range valid, filter Start > End Date (negatif), filter departemen, reset filter, sidebar toggle, chart render, tabel pending approval, pagination (10/25/50), search bar. |
+| **3.1. Laporan Semua (`All Report`)** | `023 - 027` | **5 TCs** | Load default data, search nama valid, search nama tidak ada (empty state), filter kombinasi departemen & tanggal, tombol export Excel. |
+| **3.2. Laporan Kehadiran (`Attendance`)** | `028 - 032` | **5 TCs** | Tabel kehadiran harian, preview modal foto selfie, klik koordinat Maps, filter Tepat Waktu vs Terlambat, sorting & pagination. |
+| **3.3. Laporan Izin Terlambat** | `033 - 037` | **5 TCs** | Tabel izin terlambat, filter status (Pending/Approved/Rejected), Approve izin, Reject izin dengan alasan, Reject tanpa alasan (negatif). |
+| **3.4. Laporan Pulang Cepat** | `038 - 042` | **5 TCs** | Tabel pulang cepat, filter tanggal & unit, preview lampiran bukti, Approve pulang cepat, Reject pulang cepat. |
+| **3.5. Laporan Cuti (`Leave Report`)** | `043 - 047` | **5 TCs** | Tabel cuti, filter tipe cuti, verifikasi kalkulasi durasi hari cuti, Approve cuti, Reject cuti. |
+| **3.6. Laporan Lembur (`Overtime`)** | `048 - 052` | **5 TCs** | Tabel lembur, verifikasi jam mulai-selesai, Approve SPK lembur, Reject SPK lembur, Export laporan lembur. |
+| **3.7. Laporan Sakit (`Sick Report`)** | `053 - 057` | **5 TCs** | Tabel klaim sakit, preview Surat Keterangan Dokter (SKD), filter departemen, Approve klaim sakit, Reject dokumen buram/invalid. |
+| **3.8. Laporan Koreksi Absen** | `058 - 062` | **5 TCs** | Tabel koreksi absen, komparasi jam asli vs jam koreksi, Approve koreksi, Reject koreksi, filter bulanan. |
+| **3.9. Laporan Aktivitas (`Activity`)** | `063 - 067` | **5 TCs** | Tabel log aktivitas peserta, search keyword aktivitas, filter NIK/Nama, filter rentang > 31 hari, export log aktivitas. |
+| **4.1. Import Absen** | `068 - 070` | **3 TCs** | Download template Excel, upload `.xlsx` valid, upload ekstensi salah `.pdf/.exe` (negatif). |
+| **4.2. Import Struktur User** | `071 - 073` | **3 TCs** | Download template struktur, upload `.xlsx` valid, submit tanpa pilih file (negatif). |
+| **4.3. Import Status Aktif** | `074 - 076` | **3 TCs** | Download template status aktif, upload bulk update status, upload file header rusak/kosong (negatif). |
+| **4.4. Import Cuti** | `077 - 079` | **3 TCs** | Download template kuota cuti, upload saldo cuti valid, upload nilai kuota negatif (negatif). |
+| **5.1. Management User / Karyawan** | `080 - 084` | **5 TCs** | Search by NIK (`D6201031`), tambah user baru valid, tambah NIK/email duplikat (negatif), edit profil user, nonaktifkan user. |
+| **5.2. Management Pendaftaran User** | `085 - 088` | **4 TCs** | List whitelist NIK self-regis, tambah NIK baru ke whitelist, edit data calon magang, hapus NIK dari whitelist. |
+| **5.3. Management Tipe Pengajuan** | `089 - 092` | **4 TCs** | List tipe pengajuan, tambah tipe baru, tambah dengan nama kosong (negatif), edit & hapus tipe. |
+| **5.4. Management Aturan Cuti** | `093 - 096` | **4 TCs** | List aturan cuti, tambah aturan & max hari, input max hari dengan huruf/simbol (negatif), edit & hapus aturan. |
+| **5.5. Management Posisi** | `097 - 100` | **4 TCs** | List posisi, tambah posisi baru, tambah posisi duplikat (negatif), edit & hapus posisi. |
+| **5.6. Management Departemen** | `101 - 104` | **4 TCs** | List departemen, tambah departemen baru, submit form kosong (negatif), edit & hapus departemen. |
+| **5.7. Management Divisi** | `105 - 108` | **4 TCs** | List divisi, tambah divisi & relasi departemen, edit kepala divisi, hapus divisi yang memiliki user aktif (integritas). |
+| **5.8. Management Shift Kerja** | `109 - 112` | **4 TCs** | List shift, buat shift baru (`08:00 - 17:00`), jam pulang < jam masuk (negatif), edit toleransi terlambat & hapus shift. |
+| **5.9. Management Jadwal Kerja** | `113 - 116` | **4 TCs** | List jadwal kerja, assign shift ke karyawan, assign tanggal kadaluarsa (negatif), ubah jadwal karyawan. |
+| **5.10. Management Lokasi / Geofence** | `117 - 120` | **4 TCs** | List lokasi kantor, tambah koordinat Lat/Long & radius, input Latitude di luar `-90..90` (negatif), edit radius & hapus lokasi. |
+| **5.11. Management Kalender Libur** | `121 - 124` | **4 TCs** | List hari libur nasional, tambah tanggal libur, tambah tanpa keterangan nama libur (negatif), edit & hapus hari libur. |
+| **5.12. Management Level Jabatan** | `125 - 127` | **3 TCs** | List level hirarki jabatan, tambah level jabatan, edit & hapus level jabatan. |
+| **5.13. Management Client / Mitra** | `128 - 130` | **3 TCs** | List klien penempatan magang, tambah klien baru beserta alamat & PIC, edit & hapus klien. |
+
+#### Tabel B — 60 Skenario REST Assured API Admin (`SIT_ADM_API_001` s/d `SIT_ADM_API_060`):
+- **1. Admin Auth & Token Security API (`001 - 010` — 10 TCs)**:
+  Valid login JWT, wrong pass, unregistered email, missing `strategy`, invalid strategy `"oauth2"`, empty JSON `{}`, malformed JSON, wrong HTTP method (`GET /api/login`), JWT payload claims inspection, tampered JWT signature rejection.
+- **2. Admin Users Management API (`011 - 022` — 12 TCs)**:
+  GET `/api/users` valid token, without token, pagination `$limit=5&$skip=0`, negative `$limit=-1`, filter by email, GET `/api/users/{id}` valid, non-existent ID, POST create user valid, duplicate email conflict, missing mandatory fields, PATCH update user division, DELETE user.
+- **3. Admin Attendance & Reports API (`023 - 034` — 12 TCs)**:
+  GET `/api/absents` all, filter by `startDate` & `endDate`, filter by `userId`, filter late status, without token, GET `/api/activity` all, pagination `$limit=10`, GET `/api/corrections`, GET `/api/leaves`, GET `/api/overtimes`, SLA response time `< 3000ms`, Content-Type header validation.
+- **4. Admin Approvals Workflow API (`035 - 044` — 10 TCs)**:
+  PATCH `/api/corrections/{id}` approve, reject with reason, invalid status enum, PATCH `/api/leaves/{id}` approve, reject, invalid ID, PATCH `/api/overtimes/{id}` approve, reject, RBAC test using regular User token (403 Forbidden), without token (401).
+- **5. Admin Master Data CRUD API (`045 - 060` — 16 TCs)**:
+  Departments (GET, POST valid, POST empty name, PATCH, DELETE), Positions (GET, POST, DELETE), Shifts (GET, POST valid, POST invalid time `"25:99"`), Locations (GET, POST geofence), Holidays (GET, POST, DELETE).
 
 ---
 
-## Struktur Direktori Proyek Terpadu
+### 3. Rincian Lengkap 165 Test Cases Tester Aji (User Magang Mobile Mirroring)
 
-```
-day31/ (dan c:\Projects\JuaraCoding\sqa-batch-31\playwright-testingweb\)
-│
-├── pom.xml                                  # Dependencies: Selenium 4.29.0, REST Assured 5.4.0, TestNG 7.10.2, ExtentReports 5.1.2, POI 5.2.5
-├── plan.md                                  # Dokumen rencana implementasi proyek & panduan multi-device
-├── tasklist.md                              # Roadmap dan checklist 7 fase pengujian (Deny & Aji)
-├── reference.md                             # Dokumentasi acuan arsitektur enterprise
-├── Project SQA Batch 31.xlsx                # File referensi kredensial & modul sistem
-│
-├── docs/                                    # Dokumentasi pengujian & SIT Matrix
-│   └── SIT_Scenario_Magang_Hadir.xlsx       # Multi-sheet (Summary, Deny Admin [UI & API], Aji User [UI & API], Master UI, Master API)
-│
-├── reports/                                 # Laporan eksekusi otomatis
-│   ├── ExtentReport.html                    # Dashboard interaktif ExtentReports 5 (Dark Theme, UI & API)
-│   └── screenshots/                         # Direktori screenshot kegagalan Base64 & PNG
-│
-├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── com/juaracoding/magang/
-│   │           ├── drivers/
-│   │           │   └── DriverFactory.java   # ThreadLocal multi-browser (Chrome default headless=true)
-│   │           │
-│   │           ├── pages/                   # Lapisan Page Object Model (POM)
-│   │           │   ├── BasePage.java        # Kelas induk: Explicit Wait 15s, JS Helper
-│   │           │   │
-│   │           │   ├── admin/               # Domain Tester Deny (ADMIN Web HRD)
-│   │           │   │   ├── AdminLoginPage.java
-│   │           │   │   ├── AdminDashboardPage.java
-│   │           │   │   ├── AdminReportsPage.java    # Laporan Semua, Kehadiran, Izin, Cuti, Lembur, Koreksi
-│   │           │   │   ├── AdminApprovalPage.java   # Approval Cuti, Lembur, Koreksi
-│   │           │   │   ├── AdminDownloadPage.java   # Download Reports Excel
-│   │           │   │   ├── AdminImportPage.java     # Import User & Status
-│   │           │   │   └── AdminManagementPage.java # Management User, Shifting, Divisi
-│   │           │   │
-│   │           │   └── user/                # Domain Tester Aji (USER Mobile Mirroring)
-│   │           │       ├── UserLoginPage.java
-│   │           │       ├── RegisterPage.java
-│   │           │       ├── ResetPasswordPage.java
-│   │           │       ├── AttendancePage.java      # Presensi In/Out
-│   │           │       ├── ActivityHistoryPage.java # Riwayat Absensi
-│   │           │       ├── CorrectionPage.java      # Form Koreksi
-│   │           │       ├── PermitPage.java          # Izin & Sakit
-│   │           │       ├── LeavePage.java           # Pengajuan Cuti
-│   │           │       ├── OvertimePage.java        # Pengajuan Lembur
-│   │           │       └── UserProfilePage.java     # Profil & Ubah Password
-│   │           │
-│   │           ├── reports/                 # Integrasi ExtentReports 5
-│   │           │   ├── ExtentManager.java   # Singleton ExtentSparkReporter (Dark Theme)
-│   │           │   └── ExtentTestManager.java # ThreadLocal wrapper untuk logging test nodes
-│   │           │
-│   │           └── utils/                   # Utilitas pendukung & Security
-│   │               ├── Constants.java       # URLs, credentials (Base64 encoded), timeouts
-│   │               ├── SecurityUtil.java    # Utilitas Base64 encode & decode password
-│   │               ├── ExcelUtil.java       # Generator SIT Multi-Sheet & Data Reader
-│   │               └── ScreenshotUtil.java  # Tangkap layar Base64 & PNG
-│   │
-│   └── test/
-│       ├── java/
-│       │   └── com/juaracoding/magang/
-│       │       ├── BaseTest.java            # Lifecycle TestNG Selenium UI (@BeforeMethod, @AfterMethod)
-│       │       ├── listeners/
-│       │       │   └── TestListener.java    # ITestListener: logging, tagging groups, auto-screenshot Base64
-│       │       │
-│       │       ├── tests/                   # Kumpulan skenario pengujian Web UI (Selenium)
-│       │       │   ├── admin/               # Test Suite Tester Deny (Admin HRD)
-│       │       │   │   ├── AdminLoginTest.java
-│       │       │   │   ├── AdminDashboardTest.java
-│       │       │   │   ├── AdminReportsTest.java
-│       │       │   │   ├── AdminApprovalTest.java
-│       │       │   │   ├── AdminDownloadTest.java
-│       │       │   │   ├── AdminImportTest.java
-│       │       │   │   └── AdminManagementTest.java
-│       │       │   │
-│       │       │   └── user/                # Test Suite Tester Aji (User Magang)
-│       │       │       ├── UserLoginTest.java
-│       │       │       ├── RegisterTest.java
-│       │       │       ├── ResetPasswordTest.java
-│       │       │       ├── AttendanceTest.java
-│       │       │       ├── ActivityHistoryTest.java
-│       │       │       ├── CorrectionTest.java
-│       │       │       ├── PermitTest.java
-│       │       │       ├── LeaveTest.java
-│       │       │       ├── OvertimeTest.java
-│       │       │       └── UserProfileTest.java
-│       │       │
-│       │       └── api/                     # Kumpulan skenario pengujian API (REST Assured)
-│       │           ├── BaseApiTest.java
-│       │           ├── admin/
-│       │           │   └── AdminApiTest.java # API Suite Tester Deny (15 TCs)
-│       │           └── user/
-│       │               └── UserApiTest.java  # API Suite Tester Aji (15 TCs)
-│       │
-│       └── resources/
-│           ├── testng.xml                   # Master Suite (100 Test Cases Deny & Aji)
-│           ├── testng-deny.xml              # Suite Khusus Tester Deny (Admin HRD - 50 TCs)
-│           └── testng-aji.xml               # Suite Khusus Tester Aji (User Magang - 50 TCs)
-│
-└── target/                                  # Build artifacts & Surefire report
-```
+#### Tabel A — 110 Skenario Web UI User (`SIT_USR_UI_001` s/d `SIT_USR_UI_110`):
+| Kategori Modul | Rentang ID | Jumlah | Cakupan Skenario Positif, Negatif & Boundary |
+| :--- | :---: | :---: | :--- |
+| **1. Autentikasi & Sesi Mobile User** | `001 - 012` | **12 TCs** | Valid login (`/absen/login`), wrong pass, unregistered email, invalid email format, empty email, empty pass, both empty, show/hide pass, SQLi, XSS, unauthenticated redirect dari `/apps/absent`, logout & back button check. |
+| **2. Self-Registration NIK Excel** | `013 - 024` | **12 TCs** | Navigasi ke Register, cek NIK valid (`F1240001`), auto-fill Nama & Divisi, NIK tidak terdaftar (negatif), NIK sudah teregistrasi (negatif), submit registrasi lengkap dengan foto, format email salah, email duplikat, password terlalu pendek, tanpa upload foto wajah, upload file `.txt/.pdf` pada foto, kembali ke Login. |
+| **3. Lupa & Reset Password** | `025 - 032` | **8 TCs** | Navigasi Lupa Password, request email terdaftar, email tidak terdaftar (negatif), email kosong, format email salah, submit password baru cocok, konfirmasi password tidak cocok (negatif), token reset expired (negatif). |
+| **4. Presensi Masuk & Keluar (`Clock-In/Out`)** | `033 - 050` | **18 TCs** | Verifikasi beranda (Nama, NIK, Jam Digital, Shift), buka modal kamera Masuk, capture selfie, retake selfie, pilih WFO, pilih WFH, isi catatan Masuk, submit Masuk dalam radius GPS, submit Masuk luar radius tanpa izin (negatif), kamera diblokir (negatif), GPS diblokir (negatif), double Clock-In di hari sama (negatif), perubahan tombol ke Absen Pulang, Clock-Out normal dengan selfie, Clock-Out sebelum jam pulang (peringatan), Clock-Out tanpa selfie (negatif), kartu jam masuk/pulang terupdate, badge status Tepat Waktu/Terlambat. |
+| **5. Aktivitas & Riwayat Presensi** | `051 - 060` | **10 TCs** | Navigasi `/apps/absent/activity`, list riwayat bulan berjalan, filter Start & End Date valid, filter Start > End Date (negatif), filter bulan kosong (empty state), klik detail riwayat, tambah log aktivitas harian, tambah aktivitas kosong (negatif), edit aktivitas harian, hapus aktivitas harian. |
+| **6. Pengajuan Koreksi Absen** | `061 - 070` | **10 TCs** | Navigasi Koreksi Absen, buka modal form koreksi, submit koreksi masuk & pulang valid, koreksi jam masuk saja, pilih tanggal masa depan/besok (negatif), jam pulang < jam masuk (negatif), alasan kosong (negatif), upload gambar bukti, verifikasi status `Pending`, batalkan pengajuan `Pending`. |
+| **7. Pengajuan Izin Terlambat & Pulang Cepat** | `071 - 080` | **10 TCs** | Navigasi menu Izin, submit Izin Terlambat valid, Izin Terlambat tanpa alasan (negatif), submit Izin Pulang Cepat valid, upload foto bukti izin, pilih tanggal backdate bulan lalu (negatif), upload file > 5MB (negatif), filter riwayat status izin, lihat alasan penolakan HRD, batalkan izin `Pending`. |
+| **8. Pengajuan Lembur (`Overtime`)** | `081 - 090` | **10 TCs** | Navigasi Lembur, list histori lembur, submit form lembur valid, jam selesai < jam mulai (negatif), durasi 0 menit (negatif), tanpa deskripsi tugas (negatif), upload dokumen SPK lembur, submit lembur duplikat di tanggal/jam sama (negatif), filter bulanan, batalkan lembur `Pending`. |
+| **9. Pengajuan Cuti & Klaim Sakit** | `091 - 102` | **12 TCs** | Navigasi Cuti & cek sisa kuota, submit Cuti Tahunan valid, End Date < Start Date (negatif), durasi melebihi sisa kuota (negatif), tanpa delegasi tugas (negatif), tanpa alasan cuti (negatif), navigasi menu Sakit, klaim Sakit 1 hari, klaim Sakit > 2 hari dengan SKD dokter, klaim Sakit > 2 hari tanpa SKD (negatif), upload file `.mp3/.zip` (negatif), histori Cuti & Sakit. |
+| **10. Profil Pengguna & Ubah Kata Sandi** | `103 - 110` | **8 TCs** | Navigasi Profil (`/apps/absent/profile`), verifikasi identitas (Nama, NIK `D6201031`, Email, Divisi), ganti foto profil valid, buka form Ubah Password, ubah password dengan password lama benar, password lama salah (negatif), konfirmasi password baru tidak cocok (negatif), password baru sama dengan password lama (negatif). |
+
+#### Tabel B — 55 Skenario REST Assured API User (`SIT_USR_API_001` s/d `SIT_USR_API_055`):
+- **1. User Auth & Session API (`001 - 010` — 10 TCs)**:
+  POST `/api/login` valid user, wrong pass, invalid email format, empty email, empty pass, suspended user account, POST `/api/forgot-password` valid email, unregistered email, POST `/api/reset-password` invalid token, inspect JWT user claims.
+- **2. User Registration & NIK Validation API (`011 - 018` — 8 TCs)**:
+  Check valid NIK (`F1240001`), non-existent NIK (`INVALID999`), already registered NIK (`D6201031`), POST `/api/register` valid payload, missing NIK, duplicate email, short password `"123"`, XSS payload in name field.
+- **3. User Attendance Clock-In/Out API (`019 - 030` — 12 TCs)**:
+  POST `/api/absents` Clock-In valid GPS, Clock-In WFH with notes, without Bearer token, missing lat/long, string lat/long `"abc"`, outside geofence radius, duplicate Clock-In same day, Clock-Out valid, Clock-Out before Clock-In, invalid type `"break"`, GET today's attendance status, SLA response time `< 3000ms`.
+- **4. User Activity Log & History API (`031 - 038` — 8 TCs)**:
+  GET `/api/activity` user history, filter by `startDate` & `endDate`, without Bearer token, POST `/api/activity` create daily log, empty description (negatif), PATCH `/api/activity/{id}`, DELETE `/api/activity/{id}`, IDOR security check accessing another user's activity.
+- **5. User Requests (Corrections, Permits, Leaves, Overtimes, Profile) API (`039 - 055` — 17 TCs)**:
+  POST `/api/corrections` valid, empty reason, future date, GET corrections, DELETE pending correction, POST `/api/leaves` late permit, annual leave valid, `endDate < startDate`, exceeding quota, sick claim with attachment, GET leaves history, POST `/api/overtimes` valid, invalid duration, GET overtimes history, GET `/api/users/me` profile, PATCH change password valid, PATCH change password wrong old password.
+
+---
+
+### 4. Sinkronisasi Dokumen Project (`tasklist.md` & `README.md`)
+
+#### [MODIFY] `tasklist.md` & `README.md`
+Memperbarui tabel angka cakupan test case pada `tasklist.md` dan `README.md` di kedua direktori kerja (`day31` dan `playwright-testingweb`) menjadi **355 Test Cases** (190 TCs Tester Deny & 165 TCs Tester Aji) tanpa menghapus panduan step-by-step yang sudah ada.
 
 ---
 
 ## Verification Plan
 
-### Automated Execution
-```powershell
-# 1. Eksekusi khusus porsi Tester Deny (Admin HRD - 50 TCs UI & API)
-mvn test -DsuiteXmlFile=src/test/resources/testng-deny.xml
-
-# 2. Eksekusi khusus porsi Tester Aji (User Magang - 50 TCs UI & API)
-mvn test -DsuiteXmlFile=src/test/resources/testng-aji.xml
-
-# 3. Eksekusi Master Suite gabungan seluruh 100 Test Cases
-mvn clean test
-
-# 4. Eksekusi berdasarkan kategori tags di TestNG CLI
-mvn test -Dgroups="admin-ui"
-mvn test -Dgroups="admin-api"
-mvn test -Dgroups="user-ui"
-mvn test -Dgroups="user-api"
-```
+### Automated Tests
+1. **Generate Matriks Excel 355 Test Cases**:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File "C:\Users\Asus\.gemini\antigravity\brain\2079e4bb-397e-455b-a6a3-62648ea94f11\scratch\create_excel.ps1"
+   ```
+2. **Validasi Kompilasi & Smoke Execution**:
+   ```powershell
+   mvn test-compile
+   ```
 
 ### Manual Verification
-1. Buka file `docs/SIT_Scenario_Magang_Hadir.xlsx`:
-   - Verifikasi Sheet `Tester Deny (Admin HRD)` memuat Tabel UI (35 TCs) dan Tabel API (15 TCs) yang terpisah secara visual.
-   - Verifikasi Sheet `Tester Aji (User Magang)` memuat Tabel UI (35 TCs) dan Tabel API (15 TCs) yang terpisah secara visual.
-   - Verifikasi Sheet `Master Matrix - UI` dan `Master Matrix - API` memuat data lengkap 100 skenario.
-2. Buka `reports/ExtentReport.html` untuk memastikan kedua kategori penguji terpetakan secara terorganisir.
+1. Buka file **`docs/SIT_Scenario_Magang_Hadir.xlsx`**:
+   - Pastikan **Sheet 2 (`Tester Deny (Admin HRD)`)** memuat **130 baris di Tabel A (UI)** dan **60 baris di Tabel B (API)** = **190 Test Cases**.
+   - Pastikan **Sheet 3 (`Tester Aji (User Magang)`)** memuat **110 baris di Tabel A (UI)** dan **55 baris di Tabel B (API)** = **165 Test Cases**.
+   - Pastikan **Sheet 4 (`Master Matrix - UI Scenarios`)** memuat **240 Test Cases** dan **Sheet 5 (`Master Matrix - API Scenarios`)** memuat **115 Test Cases**.
 
 
 ---
 
 ## 📖 Panduan Praktis Langkah demi Langkah (Step-by-Step Guide) Menjalankan Test UI dan API untuk Tester
 
-Panduan operasional langsung bagi **Tester Deny (Admin HRD)** dan **Tester Aji (User Magang)** untuk mengeksekusi pengujian secara mandiri maupun terintegrasi:
+Panduan operasional langsung bagi **Tester Deny (Admin HRD - 190 TCs)** dan **Tester Aji (User Magang - 165 TCs)** untuk mengeksekusi pengujian secara mandiri maupun terintegrasi:
 
 ### ⚙️ 1. Persiapan Awal Lingkungan (Prerequisites)
 Pastikan lingkungan lokal telah terpasang:
@@ -429,21 +217,21 @@ Pengujian API memvalidasi endpoint backend, token JWT, dan respons JSON secara l
   `Authorization: Bearer <token>`
 
 #### Langkah 2: Menjalankan Test API Tertentu
-- **Tester Deny (Admin API Test)**:
+- **Tester Deny (Admin API Test — 60 TCs)**:
   ```powershell
   mvn test -Dtest=AdminSmokeApiTest
   ```
-- **Tester Aji (User API Test)**:
+- **Tester Aji (User API Test — 55 TCs)**:
   ```powershell
   mvn test -Dtest=UserSmokeApiTest
   ```
 
 #### Langkah 3: Menjalankan Test API via Runner Suite
-- **Tester Deny (Seluruh Scope Admin)**:
+- **Tester Deny (Seluruh Scope Admin — 190 TCs)**:
   ```powershell
   mvn test -DsuiteXmlFile=src/test/resources/testng-deny.xml
   ```
-- **Tester Aji (Seluruh Scope User)**:
+- **Tester Aji (Seluruh Scope User — 165 TCs)**:
   ```powershell
   mvn test -DsuiteXmlFile=src/test/resources/testng-aji.xml
   ```
@@ -451,7 +239,7 @@ Pengujian API memvalidasi endpoint backend, token JWT, dan respons JSON secara l
 #### Langkah 4: Membaca & Memvalidasi Hasil di Terminal
 - Terminal akan menampilkan status eksekusi:
   - `Status Code Response: 200` atau `201` untuk skenario positif.
-  - `Status Code Response: 400`, `401`, atau `422` untuk skenario negatif.
+  - `Status Code Response: 400`, `401`, `422`, atau `500` untuk skenario negatif.
   - Indikator `PASSED` jika semua asersi (`Assert.assertEquals`, `Assert.assertTrue`) terpenuhi.
 
 ---
@@ -471,11 +259,11 @@ Pengujian Web UI mengotomasi interaksi browser Chrome secara end-to-end:
   ```
 
 #### Langkah 2: Menjalankan Test UI Tertentu
-- **Tester Deny (Admin UI)**:
+- **Tester Deny (Admin UI — 130 TCs)**:
   ```powershell
   mvn test -Dtest=AdminSmokeUiTest -Dheadless=false
   ```
-- **Tester Aji (User UI Mobile Mirroring)**:
+- **Tester Aji (User UI Mobile Mirroring — 110 TCs)**:
   ```powershell
   mvn test -Dtest=UserSmokeUiTest -Dheadless=false
   ```
@@ -501,3 +289,99 @@ Pengujian Web UI mengotomasi interaksi browser Chrome secara end-to-end:
 1. Buka file: `docs/SIT_Scenario_Magang_Hadir.xlsx`.
 2. Buka sheet masing-masing penguji (`Tester Deny` atau `Tester Aji`).
 3. Periksa status pengujian pada Tabel A (UI) dan Tabel B (API) sesuai hasil eksekusi aktual.
+
+
+---
+
+## 🌿 Strategi Git Opsi B: Isolated Feature Branching per Modul (Fase 4 & Fase 5)
+
+Sesuai ketetapan **Opsi B**, setiap pembuatan 1 fitur (pasangan **Page Object di Fase 4** + **Test Class di Fase 5**) dikerjakan pada **branch terpisah yang selalu bercabang langsung dari `main`**, dan **tidak di-merge ke `main` secara lokal** agar dapat diajukan melalui **Pull Request (PR)** per fitur di GitHub.
+
+```mermaid
+gitGraph
+    commit id: "Initial Core Framework (Fase 1-3)"
+    branch feature/deny-admin-login
+    checkout feature/deny-admin-login
+    commit id: "feat(admin): AdminLoginPage + AdminLoginTest"
+    checkout main
+    branch feature/deny-admin-dashboard
+    checkout feature/deny-admin-dashboard
+    commit id: "feat(admin): AdminDashboardPage + AdminDashboardTest"
+    checkout main
+    branch feature/aji-user-login
+    checkout feature/aji-user-login
+    commit id: "feat(user): UserLoginPage + UserLoginTest"
+    checkout main
+    branch feature/aji-user-attendance
+    checkout feature/aji-user-attendance
+    commit id: "feat(user): AttendancePage + AttendanceTest"
+```
+
+### 📌 Prosedur Eksekusi Git Opsi B (Anti-Conflict):
+1. **Selalu Mulai dari `main`**:
+   ```powershell
+   git checkout main
+   git pull origin main
+   git checkout -b <nama-branch-fitur>
+   ```
+2. **Isolasi File di Dalam Branch Fitur**:
+   - Hanya buat/edit file Page Object dan Test Class milik fitur tersebut.
+   - **Dilarang** mengedit file `BasePage.java`, `BaseTest.java`, `BaseApiTest.java`, `Constants.java`, atau `testng*.xml` di dalam branch fitur agar seluruh 17 branch fitur dapat di-PR ke `main` tanpa *merge conflict*.
+3. **Verifikasi Mandiri per Branch**:
+   ```powershell
+   mvn test -Dtest=<NamaClassTest>
+   ```
+4. **Commit & Push Branch Fitur ke GitHub**:
+   ```powershell
+   git add .
+   git commit -m "feat(<scope>): implement <NamaPage> and <NamaTest>"
+   git push -u origin <nama-branch-fitur>
+   git checkout main
+   ```
+
+---
+
+## 🤖 Template Prompt Standar untuk AI Agent (Agar Hasil Antar Tester 100% Selaras)
+
+Gunakan template prompt di bawah ini saat memberi instruksi kepada AI Agent di masing-masing komputer/device:
+
+### 1. Prompt AI Agent untuk Tester Deny (Admin HRD — 6 Feature Branches / 190 TCs)
+```text
+Tolong baca file @plan.md, @tasklist.md, dan @README.md terlebih dahulu sebagai acuan utama.
+Saya adalah Tester Deny yang bertanggung jawab pada modul ADMIN (Web HRD) dengan total 190 Test Cases (130 UI + 60 API) sesuai matriks @docs/SIT_Scenario_Magang_Hadir.xlsx.
+
+Kerjakan Fase 4 dan Fase 5 khusus porsi Tester Deny menggunakan aturan ketat Git Opsi B (Isolated Feature Branching tanpa merge ke main):
+1. Untuk SETIAP fitur Admin pada tabel "Daftar 6 Branch Fitur — Tester Deny" di @tasklist.md:
+   a. Selalu pindah ke branch `main` terlebih dahulu (`git checkout main`), lalu buat branch baru sesuai nama resmi di tasklist (`git checkout -b feature/deny-admin-...`).
+   b. Buat class Page Object di package `com.juaracoding.magang.pages.admin` yang mewarisi `BasePage`.
+   c. Buat class Test di package `com.juaracoding.magang.tests.admin` (mewarisi `BaseTest`) atau `com.juaracoding.magang.api.admin` (mewarisi `BaseApiTest`).
+   d. Gunakan `SecurityUtil.decode(Constants.ADMIN_PASSWORD_ENCODED)` untuk password, dan cantumkan ID Test Case (misal `SIT_ADM_UI_001`) pada `@Test(description = "...")` serta `ExtentTestManager.logInfo(...)`.
+   e. JANGAN mengubah file core bersama (`BasePage`, `BaseTest`, `BaseApiTest`, `Constants`, `DriverFactory`, atau `testng*.xml`) agar tidak terjadi merge conflict saat Pull Request.
+   f. Jalankan verifikasi `mvn test -Dtest=<NamaClassTest>` hingga kompilasi dan eksekusi berhasil.
+   g. Lakukan `git add` dan `git commit` hanya untuk file fitur tersebut di branch fiturnya, JANGAN di-merge ke `main`, lalu kembali ke `git checkout main` sebelum lanjut ke branch fitur berikutnya.
+```
+
+### 2. Prompt AI Agent untuk Tester Aji (User Magang — 11 Feature Branches / 165 TCs)
+```text
+Tolong baca file @plan.md, @tasklist.md, dan @README.md terlebih dahulu sebagai acuan utama.
+Saya adalah Tester Aji yang bertanggung jawab pada modul USER (Mobile Mirroring) dengan total 165 Test Cases (110 UI + 55 API) sesuai matriks @docs/SIT_Scenario_Magang_Hadir.xlsx.
+
+Kerjakan Fase 4 dan Fase 5 khusus porsi Tester Aji menggunakan aturan ketat Git Opsi B (Isolated Feature Branching tanpa merge ke main):
+1. Untuk SETIAP fitur User pada tabel "Daftar 11 Branch Fitur — Tester Aji" di @tasklist.md:
+   a. Selalu pindah ke branch `main` terlebih dahulu (`git checkout main`), lalu buat branch baru sesuai nama resmi di tasklist (`git checkout -b feature/aji-user-...`).
+   b. Buat class Page Object di package `com.juaracoding.magang.pages.user` yang mewarisi `BasePage`.
+   c. Buat class Test di package `com.juaracoding.magang.tests.user` (mewarisi `BaseTest`) atau `com.juaracoding.magang.api.user` (mewarisi `BaseApiTest`).
+   d. Gunakan `SecurityUtil.decode(Constants.USER_PASSWORD_ENCODED)` untuk password, dan cantumkan ID Test Case (misal `SIT_USR_UI_001`) pada `@Test(description = "...")` serta `ExtentTestManager.logInfo(...)`.
+   e. JANGAN mengubah file core bersama (`BasePage`, `BaseTest`, `BaseApiTest`, `Constants`, `DriverFactory`, atau `testng*.xml`) agar tidak terjadi merge conflict saat Pull Request.
+   f. Jalankan verifikasi `mvn test -Dtest=<NamaClassTest>` hingga kompilasi dan eksekusi berhasil.
+   g. Lakukan `git add` dan `git commit` hanya untuk file fitur tersebut di branch fiturnya, JANGAN di-merge ke `main`, lalu kembali ke `git checkout main` sebelum lanjut ke branch fitur berikutnya.
+```
+
+### 3. Prompt AI Agent untuk Mengerjakan 1 Fitur Spesifik Saja
+```text
+Mengacu pada @plan.md dan @tasklist.md (Aturan Git Opsi B), tolong kerjakan HANYA fitur [NAMA_BRANCH_FITUR, contoh: feature/deny-admin-login]:
+1. Pastikan checkout dari `main` (`git checkout main && git checkout -b [NAMA_BRANCH_FITUR]`).
+2. Implementasikan Page Object dan Test Class sesuai cakupan ID SIT untuk fitur ini tanpa mengubah file core bersama atau testng.xml.
+3. Jalankan `mvn test -Dtest=[NAMA_CLASS_TEST]` untuk memvalidasi hasilnya.
+4. Commit perubahan di branch `[NAMA_BRANCH_FITUR]` dan jangan di-merge ke `main`.
+```
